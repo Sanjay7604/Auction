@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .profile-container {
+      border: 5px;
+      border-radius: 10px;
+      border-color: aquamarine;
+      margin: 50px;
+      background-color: rgba(10, 117, 232,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .profile-picture {
+      margin-right: 20px;
+    }
+
+    .profile-picture img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    .profile-info {
+      max-width: 600px;
+    }
+
+    .profile-info h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .profile-info p {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .orderdetails {
+      margin: 50px 50px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .orderedimg {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+    .edit-button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .edit-button:hover {
+      background-color: #45a049; /* Darker Green */
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-picture">
+      <img src="data:image/jpeg;base64,{{ user.image_base64 }}" alt="Profile Picture">
+    </div>
+    <div class="profile-info">
+      <h1>{{ user.username }}</h1>
+      <p>Email: {{ user.email }}</p>
+      <p>Location: {{ user.address }}</p>
+<!--      <p>Contact: {{ user.contact }}</p>-->
+<!--      <p>Age: {{ user.age }}</p>-->
+    </div>
+    <a href="/profile/editprofile?username={{ user.username }}" class="edit-button">Edit</a>
+  </div>
+  <div class="orderdetails">
+    <h1>Bidded Details</h1>
+    <table>
+      <tr>
+        <th>Order Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      <tr>
+        <td><img class="orderedimg" src="order1.png" alt="Order Image"></td>
+        <td>Product Name 1</td>
+        <td>$10</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><img class="orderedimg" src="order2.png" alt="Order Image"></td>
+        <td>Product Name 2</td>
+        <td>$20</td>
+        <td>1</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding-top:0%;
+        }
+
+        ul {
+            list-style-type: none;
+
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color:#05a890;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            display: flex; /* Add this line */
+            flex-wrap: wrap; /* Add this line */
+            justify-content:center ;/* Add this line */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: lightblue;
+        }
+
+        .uactions,
+        .lauctions,
+        .pauctions {
+            width:200px; /* Adjust the width as needed */
+            margin-right: 20px; /* Add some margin between lists */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            margin-bottom: 20px; /* Add margin at the bottom */
+            background-color: #fff; /* Add background color */
+        }
+        .uactions:hover,
+        .lauctions:hover,
+        .pauctions:hover {
+            transform: scale(1.05); /* Increase scale on hover */
+            transition: transform 0.3s ease; /* Add smooth transition */
+        }
+
+
+        .uactions:last-child,
+        .lauctions:last-child,
+        .pauctions:last-child {
+            margin-right: 0; /* Remove margin from the last list */
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color:#05a890;
+            overflow: hidden;
+            padding-top: 0%;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            float:right;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .aimage
+        {
+            width:50px;
+            height: 50px;
+            border-radius: 4px;
+            align-items: center;
+            margin-left: 60px;
+
+        }
+        .view-all-btn {
+            float: right; /* Align the button to the right */
+            margin-left: 20px; /* Add margin to separate from the section */
+        }
+        .heading-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/profile?username={{ user_name }}">My Profile</a></li>
+            <li><a href="/postproduct?username={{user_name}}">Post Product</a></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </nav>
+    <h1 id="usergreeting">Hi, {{ user_name }}</h1>
+
+
+    <div class="heading-container">
+        <h2 style="margin-right: auto;">Live Auctions</h2>
+        <div class="view-all-btn">
+            <button>View All</button>
+        </div>
+    </div>
+
+    <div class="section">
+        {% if products_live %}
+        <!-- Repeat this block for each live auction -->
+        {% for product in products_live %}
+        <ul class="lauctions">
+
+            <li>
+                <h2><a href="#">{{ product.name }}</a></h2>
+                {% if product.image_base64 %}
+                <img src="data:image/jpeg;base64,{{ product.image_base64 }}" alt="Product Image" class="aimage">
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+                <p>Base Price: {{ product.base_price }}</p>
+                <p>Shipment From: {{ product.shipment_from }}</p>
+                <p>Start Date: {{ product.start_date }}</p>
+                <p>End Date: {{ product.end_date }}</p>
+                <a href="/bid?user_name={{user_name}}&product_id={{ product._id }}&product_type={{ 'live' }}">
+                    <button>Start Bid</button>
+                </a>
+            </li>
+
+        </ul>{% endfor %}
+        {% else %}
+        <p>No live auctions available</p>
+        {% endif %}
+    </div>
+
+    <div class="heading-container">
+        <h2 style="margin-right: auto;">Past Auctions</h2>
+        <div class="view-all-btn">
+            <button>View All</button>
+        </div>
+    </div>
+
+    <div class="section">
+        {% if products_past %}
+        <!-- Repeat this block for each past auction -->
+        {% for product in products_past %}
+        <ul class="pauctions">
+
+            <li>
+                <h2><a href="#">{{ product.name }}</a></h2>
+                {% if product.image_base64 %}
+                <img src="data:image/jpeg;base64,{{ product.image_base64 }}" alt="Product Image" class="aimage">
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+                <p>Base Price: {{ product.base_price }}</p>
+                <p>Shipment From: {{ product.shipment_from }}</p>
+                <p>Start Date: {{ product.start_date }}</p>
+                <p>End Date: {{ product.end_date }}</p>
+            </li>
+
+        </ul>{% endfor %}
+        {% else %}
+        <p>No past auctions available</p>
+        {% endif %}
+    </div>
+</body>
+</html>

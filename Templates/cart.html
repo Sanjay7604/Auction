@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchList</title>
+    <style>
+        /* Color scheme */
+        :root {
+            --primary-color: #47b95a; /* Green */
+            --secondary-color: #333; /* Dark gray */
+            --button-hover-color: #555; /* Darker gray */
+        }
+
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary-color); /* Use primary color */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        h1 {
+    text-align: center;
+}
+
+.total-items {
+    padding: 15px;
+    color: var(--secondary-color); /* Dark gray text */
+    text-align: center; /* Center the text */
+}
+
+
+        .cart-items {
+            border: 2px solid var(--secondary-color); /* Use secondary color */
+            border-radius: 15px;
+            box-shadow: 2px 2px 1.2px #999; /* Shadow effect */
+            height: auto; /* Adjusted height */
+            padding: 10px;
+            margin: 30px;
+            background-color: #fff; /* White background */
+        }
+
+        .cart-items-container {
+            padding: 20px;
+        }
+
+        .items-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center; /* Center items vertically */
+        }
+
+        .product-img {
+            width: 200px;
+            height: 100px;
+            margin-bottom: 12px;
+            padding: 0px 15px;
+        }
+
+        .product-img img {
+            width: 200px;
+            height: 150px;
+            padding: 25px;
+        }
+
+        .title {
+            font-size: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            color: var(--secondary-color); /* Use secondary color */
+        }
+
+        .price {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            color: #555; /* Dark gray text */
+        }
+
+        .watch-btn, .remove-btn {
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color); /* Use primary color */
+            color: #fff; /* White text */
+            border: none;
+            box-shadow: 1px 1px 1.3px rgba(1, 10, 16, 0.089);
+            padding: 8px 16px; /* Increased padding */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .watch-btn:hover, .remove-btn:hover {
+            background-color: var(--button-hover-color); /* Use button hover color */
+        }
+
+        .fa-trash-alt {
+            padding: 10px;
+            cursor: pointer;
+            color: #e40606; /* Red trash icon */
+        }
+
+        .remove-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .remove-item i {
+            color: #f00; /* Adjust color if needed */
+            font-size: 20px; /* Adjust size if needed */
+            cursor: pointer;
+        }
+
+        hr {
+            border: 0.5px solid #ddd; /* Light gray horizontal rule */
+            margin: 20px 0; /* Adjusted margin */
+        }
+    </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+        <h1>Bidkaro</h1>
+    </nav>
+    <nav>
+        <a href="#">Watchlist</a>
+        <a href="#">My Account</a>
+        <a href="#">Logout</a>
+    </nav>
+</header>
+    <section class="main-cart-section">
+        <h1>WatchList</h1>
+        <p class="total-items">You have <span class="total-items-count">4</span> items in WatchList</p>
+        <div class="cart-items">
+            <div class="cart-items-container">
+                <div class="items-info">
+                    <div class="product-img">
+                        <img src="product.png" alt="Product 1">
+                    </div>
+                    <div class="title">Product 1</div>
+                    <div class="price">
+                        <p>Starts in 2 days, 1 hours, 30 minutes</p>
+                        <p>Current Price: ₹100</p>
+                        <p>Start Time: 2024-03-17 10:00 AM</p>
+                        <p>End Time: 2024-03-17 12:00 PM</p>
+                    </div>
+                    <div class="price">
+                        <button class="watch-btn">watch</button>
+                    </div>
+                    <div class="remove-item">
+                        <button class="remove-btn">Delete</button>
+                    </div>
+                </div>
+                <hr>
+                <!-- Add more items info here -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

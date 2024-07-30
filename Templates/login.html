@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #05a890;
+    color: white;
+    border-radius: 10px;
+  }
+  .bidkaro {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .login_signup a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  /* Rest of your existing CSS styles */
+
+.login_container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Styles for the login form container */
+  .login_form_container {
+    width: 900px;
+    height: 500px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.20),
+      0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Styles for the left section of the login form container */
+  .left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  /* Styles for the form inside the left section */
+  .form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form_container h1 {
+    font-size: 40px;
+    margin-top: 0;
+  }
+
+  .input {
+    outline: none;
+    border: none;
+    width: 370px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #edf5f3;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .error_msg {
+    width: 370px; /* Take full width of the container */
+    padding: 10px; /* Adjust padding as needed */
+    margin: 10px 0; /* Add margin space top and bottom */
+    font-size: 14px;
+    color: red;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #ffe5e5; /* Add a light background color for better visibility */
+}
+
+  /* Styles for the right section of the login form container */
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3bb19b;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .right h1 {
+    margin-top: 0;
+    color: white;
+    font-size: 40px;
+    align-self: center;
+  }
+
+  .white_btn,
+  .green_btn {
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    background-color: white;
+    border-radius: 20px;
+    width: 180px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .green_btn {
+    background-color: #3bb19b;
+    color: white;
+    margin: 10px;
+  }
+  .bidkaro {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <p class="bidkaro">Bidkaro</p>
+    </div>
+    <div class="login_signup">
+      <a href="/login">Login</a>
+      <a href="/signup">Signup</a>
+    </div>
+  </header>
+  <div class="login_container">
+    <div class="login_form_container">
+      <div class="left">
+        <form class="form_container" action="/login" method="post">
+          <h1>Login to Your Account</h1>
+          <input
+            type="email"
+            placeholder="Email*"
+            name="email"
+            required
+            class="input"
+          />
+          <input
+            type="password"
+            placeholder="Password*"
+            name="password"
+            required
+            class="input"
+          />
+          {% if error %}
+            <div class="error_msg">
+              {{ error }}
+            </div>
+          {% endif %}
+          <button type="submit" class="green_btn">
+            Sign In
+          </button>
+        </form>
+      </div>
+      <div class="right">
+        <h1>New Here ?</h1>
+        <a href="/signup">
+          <button type="button" class="white_btn">
+            Sign Up
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
